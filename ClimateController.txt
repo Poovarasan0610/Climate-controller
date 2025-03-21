@@ -1,0 +1,36 @@
+class ClimateController:
+    def __init__(self, temp_threshold=25, humidity_threshold=50):
+        self.temp_threshold = temp_threshold
+        self.humidity_threshold = humidity_threshold
+
+    def control_climate(self, temperature, humidity):
+        actions = []
+
+        if temperature > self.temp_threshold:
+            actions.append("Turn on AC")
+        elif temperature < self.temp_threshold:
+            actions.append("Turn on Heater")
+        else:
+            actions.append("Temperature is optimal")
+
+        if humidity > self.humidity_threshold:
+            actions.append("Turn on Dehumidifier")
+        elif humidity < self.humidity_threshold:
+            actions.append("Turn on Humidifier")
+        else:
+            actions.append("Humidity is optimal")
+d
+        return actions
+
+
+# Example Usage
+controller = ClimateController(temp_threshold=24, humidity_threshold=55)
+
+current_temp = float(input("Enter current temperature: "))
+current_humidity = float(input("Enter current humidity: "))
+
+actions = controller.control_climate(current_temp, current_humidity)
+
+print("Actions to be taken:")
+for action in actions:
+    print("- " + action)
